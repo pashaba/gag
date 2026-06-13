@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://growagarden2.polar.web.id/sitemap.xml
