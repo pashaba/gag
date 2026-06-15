@@ -1,12 +1,53 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grow A Garden 2 – Live Stock Tracker</title>
-  <meta name="description" content="Pantau stok seed dan gear Grow A Garden 2 secara real-time." />
+
+  <!-- Primary Meta -->
+  <title>Grow A Garden 2 Live Stock Tracker – Real-Time Seed & Gear Monitor</title>
+  <meta name="description" content="Track Grow A Garden 2 stock in real-time. Get instant updates on seeds, gear, and weather events. Never miss a rare seed again!" />
+  <meta name="keywords" content="grow a garden 2, gag2 stock tracker, grow a garden 2 live stock, gag2 seed tracker, grow a garden 2 gear, gag2 weather, roblox grow a garden stock, gag2 real time" />
+  <meta name="author" content="Grow A Garden 2 Info Stock" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://growagarden2.polar.web.id/stock.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Grow A Garden 2 Live Stock Tracker" />
+  <meta property="og:description" content="Real-time seed, gear & weather tracker for Grow A Garden 2. Get WhatsApp notifications instantly when rare seeds are in stock!" />
+  <meta property="og:url" content="https://growagarden2.polar.web.id/stock.html" />
+  <meta property="og:site_name" content="Grow A Garden 2 Info Stock" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grow A Garden 2 Live Stock Tracker" />
+  <meta name="twitter:description" content="Real-time seed, gear & weather tracker for Grow A Garden 2. Never miss a rare seed!" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Grow A Garden 2 Live Stock Tracker",
+    "url": "https://growagarden2.polar.web.id/stock.html",
+    "description": "Real-time stock tracker for Grow A Garden 2 seeds, gear, and weather events.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -80,11 +121,7 @@
     }
 
     /* MAIN */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
+    main { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
 
     /* WEATHER CARD */
     .weather-card {
@@ -98,39 +135,22 @@
       gap: 1rem;
     }
     .weather-icon { font-size: 2rem; }
-    .weather-info h3 {
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--orange);
-      margin-bottom: 0.2rem;
-    }
-    .weather-info p {
-      font-size: 0.82rem;
-      color: var(--text2);
-      line-height: 1.5;
-    }
+    .weather-info h3 { font-weight: 800; font-size: 1rem; color: var(--orange); margin-bottom: 0.2rem; }
+    .weather-info p { font-size: 0.82rem; color: var(--text2); line-height: 1.5; }
     .weather-time {
       margin-left: auto;
       font-family: 'Space Mono', monospace;
       font-size: 0.7rem;
       color: var(--text2);
       text-align: right;
+      white-space: nowrap;
     }
 
     /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-    }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
 
-    .section-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      overflow: hidden;
-    }
+    .section-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; }
     .section-header {
       padding: 1rem 1.2rem 0.8rem;
       border-bottom: 1px solid var(--border);
@@ -138,29 +158,16 @@
       align-items: center;
       justify-content: space-between;
     }
-    .section-header h2 {
-      font-size: 0.9rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
+    .section-header h2 { font-size: 0.9rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem; }
     .count-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      color: var(--text2);
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text2); padding: 0.2rem 0.6rem; border-radius: 999px;
     }
     .item-list { padding: 0.6rem 0; }
     .item-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.55rem 1.2rem;
-      transition: background 0.15s;
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.55rem 1.2rem; transition: background 0.15s;
     }
     .item-row:hover { background: var(--bg2); }
     .item-row.epic {
@@ -169,73 +176,37 @@
     }
     .item-row.epic:hover { background: linear-gradient(90deg, rgba(246,130,31,0.1) 0%, transparent 100%); }
     .item-emoji { font-size: 1.1rem; width: 1.5rem; text-align: center; }
-    .item-name {
-      flex: 1;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-transform: capitalize;
-    }
+    .item-name { flex: 1; font-size: 0.88rem; font-weight: 600; text-transform: capitalize; }
     .item-qty {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--orange);
-      background: rgba(246,130,31,0.08);
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
+      font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700;
+      color: var(--orange); background: rgba(246,130,31,0.08);
+      padding: 0.2rem 0.55rem; border-radius: 999px;
     }
     .epic-star {
-      font-size: 0.65rem;
-      background: var(--orange);
-      color: #fff;
-      padding: 0.15rem 0.4rem;
-      border-radius: 999px;
-      font-weight: 800;
+      font-size: 0.65rem; background: var(--orange); color: #fff;
+      padding: 0.15rem 0.4rem; border-radius: 999px; font-weight: 800;
     }
 
     /* EMPTY */
-    .empty {
-      padding: 2rem 1.2rem;
-      text-align: center;
-      color: var(--text2);
-      font-size: 0.85rem;
-    }
+    .empty { padding: 2rem 1.2rem; text-align: center; color: var(--text2); font-size: 0.85rem; }
     .empty span { font-size: 1.8rem; display: block; margin-bottom: 0.5rem; }
 
     /* LOADING */
-    .loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem;
-      gap: 0.5rem;
-      color: var(--text2);
-      font-size: 0.88rem;
-    }
+    .loading { display: flex; align-items: center; justify-content: center; padding: 3rem; gap: 0.5rem; color: var(--text2); font-size: 0.88rem; }
     .spinner {
       width: 18px; height: 18px;
-      border: 2px solid var(--border);
-      border-top-color: var(--orange);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
+      border: 2px solid var(--border); border-top-color: var(--orange);
+      border-radius: 50%; animation: spin 0.7s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* WA BUTTON */
     .wa-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      background: var(--wa);
-      color: #fff;
-      font-weight: 800;
-      font-size: 0.9rem;
-      padding: 0.8rem 1.5rem;
-      border-radius: 999px;
-      text-decoration: none;
-      margin: 1.2rem auto 0;
-      width: fit-content;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.6rem; background: var(--wa); color: #fff;
+      font-weight: 800; font-size: 0.9rem; padding: 0.8rem 1.5rem;
+      border-radius: 999px; text-decoration: none;
+      margin: 1.2rem auto 0; width: fit-content;
       box-shadow: 0 4px 16px rgba(37,211,102,0.3);
       transition: transform 0.2s, box-shadow 0.2s;
     }
@@ -243,13 +214,11 @@
     .wa-btn svg { width: 18px; height: 18px; fill: #fff; }
 
     footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--text2);
-      font-size: 0.78rem;
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
+      text-align: center; padding: 2rem 1rem;
+      color: var(--text2); font-size: 0.78rem;
+      border-top: 1px solid var(--border); margin-top: 2rem;
     }
+    footer a { color: var(--orange); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -276,46 +245,41 @@
 
   <!-- LOADING -->
   <div class="loading" id="loadingEl">
-    <div class="spinner"></div> Memuat data stok...
+    <div class="spinner"></div> Loading stock data...
   </div>
 
   <!-- STOCK GRID -->
   <div class="grid" id="stockGrid" style="display:none">
-
-    <!-- SEEDS -->
     <div class="section-card">
       <div class="section-header">
         <h2>🌱 Seeds</h2>
-        <span class="count-badge" id="seedCount">0 item</span>
+        <span class="count-badge" id="seedCount">0 items</span>
       </div>
       <div class="item-list" id="seedList"></div>
     </div>
-
-    <!-- GEAR -->
     <div class="section-card">
       <div class="section-header">
         <h2>⚙️ Gear</h2>
-        <span class="count-badge" id="gearCount">0 item</span>
+        <span class="count-badge" id="gearCount">0 items</span>
       </div>
       <div class="item-list" id="gearList"></div>
     </div>
-
   </div>
 
-  <!-- WA BUTTON -->
   <a href="https://whatsapp.com/channel/0029VbC3ptQ3wtbAAjRJhS3r" target="_blank" rel="noopener" class="wa-btn">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Notifikasi via WhatsApp
+    Get WhatsApp Notifications
   </a>
 
 </main>
 
 <footer>
-  © 2025 Grow A Garden 2 Info Stock · <a href="https://growagarden2.polar.web.id">growagarden2.polar.web.id</a>
+  © 2025 <strong>Grow A Garden 2 Info Stock</strong> · Not affiliated with Roblox or Grow A Garden 2. ·
+  <a href="https://growagarden2.polar.web.id">growagarden2.polar.web.id</a>
 </footer>
 
 <script>
-  const SUPABASE_URL = "https://xcxciixqhmghitmyigbj.supabase.co"
+  const SUPABASE_URL  = "https://xcxciixqhmghitmyigbj.supabase.co"
   const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjeGNpaXhxaG1naGl0bXlpZ2JqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1NjM0NjAsImV4cCI6MjA5NDEzOTQ2MH0.MAtw-cwRuEWXL0OQzULPs8EXfvMtUx2t3RhZeXu45sk"
 
   const EPIC_PLUS = new Set([
@@ -342,16 +306,16 @@
   function timeAgo(iso) {
     if (!iso) return '–'
     const diff = Math.floor((Date.now() - new Date(iso)) / 1000)
-    if (diff < 60) return `${diff}d lalu`
-    if (diff < 3600) return `${Math.floor(diff/60)}m lalu`
-    return `${Math.floor(diff/3600)}j lalu`
+    if (diff < 60) return `${diff}s ago`
+    if (diff < 3600) return `${Math.floor(diff/60)}m ago`
+    return `${Math.floor(diff/3600)}h ago`
   }
 
   function renderSeeds(seeds) {
     const el = document.getElementById('seedList')
-    document.getElementById('seedCount').textContent = `${seeds.length} item`
+    document.getElementById('seedCount').textContent = `${seeds.length} items`
     if (!seeds.length) {
-      el.innerHTML = '<div class="empty"><span>🌱</span>Tidak ada seed saat ini</div>'
+      el.innerHTML = '<div class="empty"><span>🌱</span>No seeds available right now</div>'
       return
     }
     el.innerHTML = seeds.map(s => `
@@ -366,9 +330,9 @@
 
   function renderGear(gear) {
     const el = document.getElementById('gearList')
-    document.getElementById('gearCount').textContent = `${gear.length} item`
+    document.getElementById('gearCount').textContent = `${gear.length} items`
     if (!gear.length) {
-      el.innerHTML = '<div class="empty"><span>⚙️</span>Tidak ada gear saat ini</div>'
+      el.innerHTML = '<div class="empty"><span>⚙️</span>No gear available right now</div>'
       return
     }
     el.innerHTML = gear.map(g => `
@@ -403,13 +367,10 @@
       })
       const data = await res.json()
       if (!data?.length) return
-
       const row = data[0]
-
       document.getElementById('loadingEl').style.display = 'none'
       document.getElementById('stockGrid').style.display = 'grid'
-      document.getElementById('lastUpdate').textContent = `Update: ${timeAgo(row.updated_at)}`
-
+      document.getElementById('lastUpdate').textContent = `Updated ${timeAgo(row.updated_at)}`
       renderSeeds(row.seeds || [])
       renderGear(row.gear || [])
       renderWeather(row.weather || {})
@@ -418,12 +379,10 @@
     }
   }
 
-  // Realtime via Supabase
   function subscribeRealtime() {
     const ws = new WebSocket(
       `wss://xcxciixqhmghitmyigbj.supabase.co/realtime/v1/websocket?apikey=${SUPABASE_ANON}&vsn=1.0.0`
     )
-
     ws.onopen = () => {
       ws.send(JSON.stringify({
         topic: "realtime:public:gag2_stock",
@@ -432,21 +391,13 @@
         ref: "1"
       }))
     }
-
     ws.onmessage = (e) => {
       const msg = JSON.parse(e.data)
-      if (msg.event === 'UPDATE' || msg.event === 'INSERT') {
-        fetchStock()
-      }
+      if (msg.event === 'UPDATE' || msg.event === 'INSERT') fetchStock()
     }
-
-    ws.onclose = () => {
-      // Reconnect setelah 3 detik
-      setTimeout(subscribeRealtime, 3000)
-    }
+    ws.onclose = () => setTimeout(subscribeRealtime, 3000)
   }
 
-  // Fetch awal + polling fallback tiap 30 detik
   fetchStock()
   subscribeRealtime()
   setInterval(fetchStock, 30000)
