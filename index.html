@@ -110,7 +110,26 @@
     .section-header h3{font-size:0.88rem;font-weight:800;display:flex;align-items:center;gap:0.35rem}
     .count-badge{font-size:0.68rem;font-weight:700;background:var(--bg);border:1px solid var(--border);color:var(--text2);padding:0.18rem 0.55rem;border-radius:999px}
 
-    /* ITEMS */
+    /* SEED CARDS - 2 kolom */
+    .seed-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem}
+    @media(max-width:400px){.seed-cards{grid-template-columns:repeat(2,1fr)}}
+    .seed-card{
+      background:var(--bg);border:1px solid var(--border);border-radius:0.7rem;
+      padding:0.7rem 0.8rem;display:flex;flex-direction:column;gap:0.25rem;
+      transition:border-color .15s,transform .15s;cursor:default;
+    }
+    .seed-card:hover{border-color:#d1d5db;transform:translateY(-1px)}
+    .seed-card.epic{
+      background:linear-gradient(135deg,rgba(246,130,31,0.06),rgba(255,154,60,0.04));
+      border-color:rgba(246,130,31,0.35);
+    }
+    .seed-card.epic:hover{border-color:var(--orange)}
+    .seed-card-top{display:flex;align-items:center;justify-content:space-between}
+    .seed-card-emoji{font-size:1.5rem;line-height:1}
+    .seed-card-name{font-size:0.8rem;font-weight:700;text-transform:capitalize;color:var(--text);line-height:1.2}
+    .seed-card-qty{font-family:'Space Mono',monospace;font-size:0.72rem;font-weight:700;color:var(--orange)}
+
+    /* ITEM ROW (gear) */
     .item-list{padding:0.4rem 0}
     .item-row{display:flex;align-items:center;gap:0.55rem;padding:0.5rem 1.1rem;transition:background .12s;cursor:default}
     .item-row:hover{background:var(--bg)}
@@ -292,43 +311,60 @@
     </div>`
   }
 
+  function seedCardHTML(s) {
+    const isEpic = EPIC_PLUS.has(s.name)
+    return `<div class="seed-card ${isEpic ? 'epic' : ''}">
+      <div class="seed-card-top">
+        <span class="seed-card-emoji">${s.emoji}</span>
+        ${isEpic ? '<span class="rare-badge">RARE</span>' : ''}
+      </div>
+      <div class="seed-card-name">${s.name}</div>
+      <div class="seed-card-qty">${s.qty}x</div>
+    </div>`
+  }
+
   function renderContent(seeds, gear) {
     const area = document.getElementById('contentArea')
+
+    const seedsHTML = seeds.length
+      ? `<div class="seed-cards">${seeds.map(seedCardHTML).join('')}</div>`
+      : '<div class="empty"><span class="empty-icon">🌱</span>No seeds available</div>'
+
+    const gearHTML = gear.length
+      ? gear.map(g => itemHTML(g,'gear')).join('')
+      : '<div class="empty"><span class="empty-icon">⚙️</span>No gear available</div>'
+
     if (currentView === 'grid') {
       area.innerHTML = `
-        <div class="stock-grid">
-          <div class="section-card">
-            <div class="section-header">
-              <h3>🌱 Seeds</h3>
-              <span class="count-badge">${seeds.length} items</span>
-            </div>
-            <div class="item-list">
-              ${seeds.length ? seeds.map(s => itemHTML(s,'seed')).join('') : '<div class="empty"><span class="empty-icon">🌱</span>No seeds available</div>'}
-            </div>
+        <div class="section-card" style="margin-bottom:1rem">
+          <div class="section-header">
+            <h3>🌱 Seeds</h3>
+            <span class="count-badge">${seeds.length} items</span>
           </div>
-          <div class="section-card">
-            <div class="section-header">
-              <h3>⚙️ Gear</h3>
-              <span class="count-badge">${gear.length} items</span>
-            </div>
-            <div class="item-list">
-              ${gear.length ? gear.map(g => itemHTML(g,'gear')).join('') : '<div class="empty"><span class="empty-icon">⚙️</span>No gear available</div>'}
-            </div>
+          <div style="padding:0.8rem 1rem">${seedsHTML}</div>
+        </div>
+        <div class="section-card">
+          <div class="section-header">
+            <h3>⚙️ Gear</h3>
+            <span class="count-badge">${gear.length} items</span>
           </div>
+          <div class="item-list">${gearHTML}</div>
         </div>`
     } else {
       area.innerHTML = `
-        <div class="section-card">
-          <div style="padding:0.8rem 1.1rem">
-            <div class="list-section-title">🌱 Seeds <span style="margin-left:0.4rem;font-weight:400;font-size:0.72rem;color:var(--text2)">${seeds.length} items</span></div>
-            <div class="item-list" style="margin-top:0.3rem">
-              ${seeds.length ? seeds.map(s => itemHTML(s,'seed')).join('') : '<div class="empty"><span class="empty-icon">🌱</span>No seeds available</div>'}
-            </div>
-            <div class="list-section-title" style="margin-top:0.6rem">⚙️ Gear <span style="margin-left:0.4rem;font-weight:400;font-size:0.72rem;color:var(--text2)">${gear.length} items</span></div>
-            <div class="item-list" style="margin-top:0.3rem">
-              ${gear.length ? gear.map(g => itemHTML(g,'gear')).join('') : '<div class="empty"><span class="empty-icon">⚙️</span>No gear available</div>'}
-            </div>
+        <div class="section-card" style="margin-bottom:1rem">
+          <div class="section-header">
+            <h3>🌱 Seeds</h3>
+            <span class="count-badge">${seeds.length} items</span>
           </div>
+          <div style="padding:0.8rem 1rem">${seedsHTML}</div>
+        </div>
+        <div class="section-card">
+          <div class="section-header">
+            <h3>⚙️ Gear</h3>
+            <span class="count-badge">${gear.length} items</span>
+          </div>
+          <div class="item-list">${gearHTML}</div>
         </div>`
     }
   }
