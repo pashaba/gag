@@ -3,791 +3,453 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grow A Garden 2 Stock Tracker – Live Stock & Weather Notifier</title>
-
-  <!-- SEO Meta -->
-  <meta name="description" content="Pantau stok Grow A Garden 2 secara live! Dapatkan notifikasi seed langka, gear, dan cuaca lewat WhatsApp. Tracker terlengkap untuk GAG2 Indonesia." />
-  <meta name="keywords" content="grow a garden 2, grow a garden 2 stock, gag2 stock tracker, grow a garden 2 live tracker, grow a garden 2 notifier, grow a garden 2 seed stock, grow a garden 2 gear stock, grow a garden 2 weather, gag2 indonesia, roblox grow a garden stock" />
-  <meta name="author" content="Grow A Garden 2 Info Stock" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://growagarden2.polar.web.id/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Grow A Garden 2 Stock Tracker – Live Notifier via WhatsApp" />
-  <meta property="og:description" content="Pantau stok seed langka, gear, dan cuaca Grow A Garden 2 secara real-time. Notifikasi otomatis via saluran WhatsApp." />
-  <meta property="og:url" content="https://growagarden2.polar.web.id/" />
-  <meta property="og:site_name" content="Grow A Garden 2 Info Stock" />
-  <meta property="og:locale" content="id_ID" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Grow A Garden 2 Stock Tracker – Live Notifier" />
-  <meta name="twitter:description" content="Notifikasi stok seed & gear Grow A Garden 2 otomatis via WhatsApp. Jangan sampai ketinggalan item langka!" />
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Grow A Garden 2 Info Stock",
-    "url": "https://growagarden2.polar.web.id/",
-    "description": "Live stock tracker dan notifier untuk game Roblox Grow A Garden 2. Pantau seed langka, gear, dan cuaca secara real-time via WhatsApp.",
-    "inLanguage": "id-ID",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://growagarden2.polar.web.id/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
+  <title>Grow A Garden 2 – Live Stock Tracker</title>
+  <meta name="description" content="Pantau stok seed dan gear Grow A Garden 2 secara real-time." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --green-deep:   #1a3a1f;
-      --green-mid:    #2d6a35;
-      --green-bright: #4caf50;
-      --green-glow:   #6dff7a;
-      --soil:         #5c3d1e;
-      --gold:         #f5c842;
-      --sky:          #a8d8ea;
-      --white:        #f4fdf5;
-      --card-bg:      rgba(255,255,255,0.06);
-      --border:       rgba(109,255,122,0.15);
-      --wa-green:     #25D366;
+      --bg:       #ffffff;
+      --bg2:      #f7f8fa;
+      --border:   #e8eaed;
+      --orange:   #f6821f;
+      --orange2:  #ff9a3c;
+      --green:    #22c55e;
+      --text:     #1a1a2e;
+      --text2:    #6b7280;
+      --card:     #ffffff;
+      --wa:       #25D366;
     }
-
-    html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Nunito', sans-serif;
-      background-color: var(--green-deep);
-      color: var(--white);
+      background: var(--bg2);
+      color: var(--text);
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
-    /* ── BACKGROUND AMBIENCE ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(77,175,80,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(109,255,122,0.07) 0%, transparent 55%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── FLOATING PARTICLES ── */
-    .particles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .particle {
-      position: absolute;
-      font-size: 1.2rem;
-      opacity: 0;
-      animation: floatUp linear infinite;
-    }
-    @keyframes floatUp {
-      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.6; }
-      90%  { opacity: 0.4; }
-      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(26,58,31,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
       font-weight: 900;
-      font-size: 1.1rem;
-      color: var(--green-glow);
+      font-size: 1rem;
+      color: var(--orange);
       text-decoration: none;
-    }
-    .nav-logo span { color: var(--white); font-weight: 600; }
-    .nav-wa {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--wa-green);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.5rem 1.1rem;
-      border-radius: 999px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .nav-wa:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 5rem 1.5rem 4rem;
-      max-width: 780px;
-      margin: 0 auto;
-    }
-    .hero-badge {
-      display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: rgba(109,255,122,0.1);
-      border: 1px solid rgba(109,255,122,0.3);
-      color: var(--green-glow);
-      font-size: 0.78rem;
+    }
+    .nav-logo span { color: var(--text); font-weight: 700; }
+    .nav-right { display: flex; align-items: center; gap: 0.8rem; }
+    .last-update {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text2);
+    }
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--green);
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.35rem 1rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 999px;
-      margin-bottom: 1.5rem;
     }
     .live-dot {
-      width: 7px; height: 7px;
-      background: var(--green-glow);
+      width: 6px; height: 6px;
+      background: var(--green);
       border-radius: 50%;
       animation: pulse 1.5s ease-in-out infinite;
     }
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.4); }
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.2rem;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--green-glow);
-      text-shadow: 0 0 30px rgba(109,255,122,0.5);
-    }
-    .hero p {
-      font-size: 1.1rem;
-      color: rgba(244,253,245,0.7);
-      line-height: 1.7;
-      max-width: 560px;
-      margin: 0 auto 2.5rem;
-    }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      background: var(--wa-green);
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 0.9rem 2.2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 32px rgba(37,211,102,0.35);
-    }
-    .hero-cta:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 12px 40px rgba(37,211,102,0.5); }
-    .hero-cta svg { width: 22px; height: 22px; fill: #fff; }
-
-    /* ── STOCK TICKER ── */
-    .ticker-wrap {
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-      background: rgba(109,255,122,0.06);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 0.7rem 0;
-      margin-bottom: 4rem;
-    }
-    .ticker {
-      display: flex;
-      gap: 3rem;
-      animation: ticker 25s linear infinite;
-      white-space: nowrap;
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .ticker-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      color: rgba(244,253,245,0.6);
-    }
-    .ticker-item .name { color: var(--green-glow); font-weight: 700; }
-
-    /* ── SECTIONS ── */
-    section {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 0 auto 5rem;
-      padding: 0 1.5rem;
-    }
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--green-glow);
-      margin-bottom: 0.6rem;
-      opacity: 0.7;
-    }
-    .section-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 900;
-      margin-bottom: 2rem;
-      letter-spacing: -0.02em;
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.4; transform:scale(1.4); }
     }
 
-    /* ── HOW IT WORKS ── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
-    }
-    .step-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1.2rem;
-      padding: 1.8rem 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .step-card:hover { border-color: rgba(109,255,122,0.4); transform: translateY(-3px); }
-    .step-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .step-card h3 {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: var(--white);
-    }
-    .step-card p {
-      font-size: 0.88rem;
-      color: rgba(244,253,245,0.6);
-      line-height: 1.6;
-    }
-
-    /* ── SEED TABLE ── */
-    .tier-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.2rem;
-    }
-    .tier-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1.2rem;
+    /* MAIN */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
       padding: 1.5rem;
-      transition: border-color 0.2s;
     }
-    .tier-card:hover { border-color: rgba(109,255,122,0.35); }
-    .tier-header {
+
+    /* WEATHER CARD */
+    .weather-card {
+      background: linear-gradient(135deg, #fff7ed, #fff);
+      border: 1px solid #fed7aa;
+      border-radius: 1rem;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+    .weather-icon { font-size: 2rem; }
+    .weather-info h3 {
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      color: var(--orange);
+      margin-bottom: 0.2rem;
     }
-    .tier-badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-    }
-    .badge-common    { background: rgba(180,180,180,0.2); color: #ccc; }
-    .badge-uncommon  { background: rgba(77,175,80,0.2);  color: #6dff7a; }
-    .badge-rare      { background: rgba(100,149,237,0.2); color: #89b4fa; }
-    .badge-epic      { background: rgba(186,85,211,0.2);  color: #d0a0f8; }
-    .badge-legendary { background: rgba(245,200,66,0.2);  color: #f5c842; }
-    .badge-mythic    { background: rgba(255,99,71,0.2);   color: #ff8a70; }
-    .badge-super     { background: rgba(255,223,0,0.2);   color: #ffe44d; }
-    .seed-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .seed-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 999px;
-      padding: 0.3rem 0.75rem;
+    .weather-info p {
       font-size: 0.82rem;
-      color: rgba(244,253,245,0.85);
+      color: var(--text2);
+      line-height: 1.5;
     }
-
-    /* ── WA PROMO ── */
-    .wa-promo {
-      background: linear-gradient(135deg, rgba(37,211,102,0.12) 0%, rgba(109,255,122,0.06) 100%);
-      border: 1px solid rgba(37,211,102,0.3);
-      border-radius: 1.5rem;
-      padding: 3rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .wa-promo::before {
-      content: '🌱';
-      position: absolute;
-      font-size: 8rem;
-      opacity: 0.05;
-      top: -1rem;
-      right: -1rem;
-    }
-    .wa-promo h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 900;
-      margin-bottom: 0.8rem;
-    }
-    .wa-promo p {
-      color: rgba(244,253,245,0.65);
-      font-size: 0.98rem;
-      max-width: 480px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
-    }
-    .wa-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      background: var(--wa-green);
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 0.9rem 2.4rem;
-      border-radius: 999px;
-      text-decoration: none;
-      box-shadow: 0 8px 32px rgba(37,211,102,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .wa-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 12px 40px rgba(37,211,102,0.55); }
-    .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
-    .wa-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-    .wa-stat { text-align: center; }
-    .wa-stat .num {
+    .weather-time {
+      margin-left: auto;
       font-family: 'Space Mono', monospace;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--green-glow);
-    }
-    .wa-stat .lbl {
-      font-size: 0.75rem;
-      color: rgba(244,253,245,0.5);
-      margin-top: 0.2rem;
+      font-size: 0.7rem;
+      color: var(--text2);
+      text-align: right;
     }
 
-    /* ── FAQ ── */
-    .faq-list { display: flex; flex-direction: column; gap: 0.8rem; }
-    .faq-item {
-      background: var(--card-bg);
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+    .section-card {
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 1rem;
       overflow: hidden;
     }
-    .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      color: var(--white);
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-align: left;
-      padding: 1.1rem 1.4rem;
-      cursor: pointer;
+    .section-header {
+      padding: 1rem 1.2rem 0.8rem;
+      border-bottom: 1px solid var(--border);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      justify-content: space-between;
     }
-    .faq-q .arrow {
-      font-size: 0.8rem;
-      color: var(--green-glow);
-      transition: transform 0.2s;
-      flex-shrink: 0;
+    .section-header h2 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .faq-a {
-      display: none;
-      padding: 0 1.4rem 1.1rem;
+    .count-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+    .item-list { padding: 0.6rem 0; }
+    .item-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 1.2rem;
+      transition: background 0.15s;
+    }
+    .item-row:hover { background: var(--bg2); }
+    .item-row.epic {
+      background: linear-gradient(90deg, rgba(246,130,31,0.06) 0%, transparent 100%);
+      border-left: 3px solid var(--orange);
+    }
+    .item-row.epic:hover { background: linear-gradient(90deg, rgba(246,130,31,0.1) 0%, transparent 100%); }
+    .item-emoji { font-size: 1.1rem; width: 1.5rem; text-align: center; }
+    .item-name {
+      flex: 1;
       font-size: 0.88rem;
-      color: rgba(244,253,245,0.65);
-      line-height: 1.7;
+      font-weight: 600;
+      text-transform: capitalize;
     }
-    .faq-item.open .faq-a { display: block; }
-    .faq-item.open .arrow { transform: rotate(180deg); }
+    .item-qty {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--orange);
+      background: rgba(246,130,31,0.08);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+    }
+    .epic-star {
+      font-size: 0.65rem;
+      background: var(--orange);
+      color: #fff;
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      font-weight: 800;
+    }
 
-    /* ── FOOTER ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
+    /* EMPTY */
+    .empty {
+      padding: 2rem 1.2rem;
       text-align: center;
-      padding: 2rem 1.5rem;
-      color: rgba(244,253,245,0.35);
-      font-size: 0.82rem;
+      color: var(--text2);
+      font-size: 0.85rem;
     }
-    footer a { color: var(--green-glow); text-decoration: none; }
+    .empty span { font-size: 1.8rem; display: block; margin-bottom: 0.5rem; }
 
-    @media (max-width: 600px) {
-      nav { padding: 0.9rem 1.2rem; }
-      .hero { padding: 3.5rem 1.2rem 3rem; }
-      .wa-stats { gap: 1.5rem; }
+    /* LOADING */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      gap: 0.5rem;
+      color: var(--text2);
+      font-size: 0.88rem;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-top-color: var(--orange);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* WA BUTTON */
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: var(--wa);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      margin: 1.2rem auto 0;
+      width: fit-content;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+    .wa-btn svg { width: 18px; height: 18px; fill: #fff; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text2);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
-<!-- Floating particles -->
-<div class="particles" id="particles"></div>
-
-<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">🌱 <span>GAG2 Stock</span></a>
-  <a href="https://whatsapp.com/channel/0029VbC3ptQ3wtbAAjRJhS3r" target="_blank" rel="noopener" class="nav-wa">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Ikuti Saluran
-  </a>
+  <div class="nav-right">
+    <span class="last-update" id="lastUpdate">–</span>
+    <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">
-    <span class="live-dot"></span>
-    Live Tracker Aktif
+<main>
+
+  <!-- WEATHER -->
+  <div class="weather-card" id="weatherCard" style="display:none">
+    <div class="weather-icon" id="weatherIcon">🌤️</div>
+    <div class="weather-info">
+      <h3 id="weatherTitle">–</h3>
+      <p id="weatherBody">–</p>
+    </div>
+    <div class="weather-time" id="weatherTime">–</div>
   </div>
-  <h1>
-    Jangan Ketinggalan<br />
-    <em>Seed Langka</em> GAG2
-  </h1>
-  <p>
-    Pantau stok seed, gear, dan cuaca <strong>Grow A Garden 2</strong> secara real-time.
-    Notifikasi otomatis langsung ke WhatsApp kamu — gratis, tanpa install app tambahan.
-  </p>
-  <a href="https://whatsapp.com/channel/0029VbC3ptQ3wtbAAjRJhS3r" target="_blank" rel="noopener" class="hero-cta">
+
+  <!-- LOADING -->
+  <div class="loading" id="loadingEl">
+    <div class="spinner"></div> Memuat data stok...
+  </div>
+
+  <!-- STOCK GRID -->
+  <div class="grid" id="stockGrid" style="display:none">
+
+    <!-- SEEDS -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>🌱 Seeds</h2>
+        <span class="count-badge" id="seedCount">0 item</span>
+      </div>
+      <div class="item-list" id="seedList"></div>
+    </div>
+
+    <!-- GEAR -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2>⚙️ Gear</h2>
+        <span class="count-badge" id="gearCount">0 item</span>
+      </div>
+      <div class="item-list" id="gearList"></div>
+    </div>
+
+  </div>
+
+  <!-- WA BUTTON -->
+  <a href="https://whatsapp.com/channel/0029VbC3ptQ3wtbAAjRJhS3r" target="_blank" rel="noopener" class="wa-btn">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Ikuti Saluran WhatsApp
+    Notifikasi via WhatsApp
   </a>
-</div>
 
-<!-- TICKER -->
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker" id="ticker">
-    <span class="ticker-item">🥕 <span class="name">Carrot</span> Common</span>
-    <span class="ticker-item">🍓 <span class="name">Strawberry</span> Common</span>
-    <span class="ticker-item">🫐 <span class="name">Blueberry</span> Common</span>
-    <span class="ticker-item">🌷 <span class="name">Tulip</span> Uncommon</span>
-    <span class="ticker-item">🍅 <span class="name">Tomato</span> Uncommon</span>
-    <span class="ticker-item">🎋 <span class="name">Bamboo</span> Rare</span>
-    <span class="ticker-item">🌵 <span class="name">Cactus</span> Rare</span>
-    <span class="ticker-item">🍄 <span class="name">Mushroom</span> Epic</span>
-    <span class="ticker-item">🍇 <span class="name">Grape</span> Epic</span>
-    <span class="ticker-item">🥭 <span class="name">Mango</span> Epic</span>
-    <span class="ticker-item">🐉 <span class="name">Dragon Fruit</span> Legendary</span>
-    <span class="ticker-item">🌰 <span class="name">Acorn</span> Legendary</span>
-    <span class="ticker-item">🍒 <span class="name">Cherry</span> Legendary</span>
-    <span class="ticker-item">🌻 <span class="name">Sunflower</span> Legendary</span>
-    <span class="ticker-item">🪤 <span class="name">Venus Fly Trap</span> Mythic</span>
-    <span class="ticker-item">🌙 <span class="name">Moon Bloom</span> Super</span>
-    <span class="ticker-item">🔥 <span class="name">Dragon's Breath</span> Super</span>
-    <!-- duplicate for loop -->
-    <span class="ticker-item">🥕 <span class="name">Carrot</span> Common</span>
-    <span class="ticker-item">🍓 <span class="name">Strawberry</span> Common</span>
-    <span class="ticker-item">🫐 <span class="name">Blueberry</span> Common</span>
-    <span class="ticker-item">🌷 <span class="name">Tulip</span> Uncommon</span>
-    <span class="ticker-item">🍅 <span class="name">Tomato</span> Uncommon</span>
-    <span class="ticker-item">🎋 <span class="name">Bamboo</span> Rare</span>
-    <span class="ticker-item">🌵 <span class="name">Cactus</span> Rare</span>
-    <span class="ticker-item">🍄 <span class="name">Mushroom</span> Epic</span>
-    <span class="ticker-item">🍇 <span class="name">Grape</span> Epic</span>
-    <span class="ticker-item">🥭 <span class="name">Mango</span> Epic</span>
-    <span class="ticker-item">🐉 <span class="name">Dragon Fruit</span> Legendary</span>
-    <span class="ticker-item">🌰 <span class="name">Acorn</span> Legendary</span>
-    <span class="ticker-item">🍒 <span class="name">Cherry</span> Legendary</span>
-    <span class="ticker-item">🌻 <span class="name">Sunflower</span> Legendary</span>
-    <span class="ticker-item">🪤 <span class="name">Venus Fly Trap</span> Mythic</span>
-    <span class="ticker-item">🌙 <span class="name">Moon Bloom</span> Super</span>
-    <span class="ticker-item">🔥 <span class="name">Dragon's Breath</span> Super</span>
-  </div>
-</div>
+</main>
 
-<!-- HOW IT WORKS -->
-<section aria-labelledby="how-title">
-  <div class="section-label">Cara Kerja</div>
-  <h2 class="section-title" id="how-title">Notifikasi otomatis,<br />tanpa ribet</h2>
-  <div class="steps">
-    <div class="step-card">
-      <span class="step-icon">📡</span>
-      <h3>Monitor Discord 24/7</h3>
-      <p>Bot kami memantau channel stock Grow A Garden 2 secara real-time setiap saat, termasuk saat kamu tidur.</p>
-    </div>
-    <div class="step-card">
-      <span class="step-icon">⚡</span>
-      <h3>Deteksi Item Langka</h3>
-      <p>Seed Epic, Legendary, Mythic, dan Super otomatis dideteksi dan diberi notifikasi khusus agar tidak terlewat.</p>
-    </div>
-    <div class="step-card">
-      <span class="step-icon">📲</span>
-      <h3>Langsung ke WhatsApp</h3>
-      <p>Update stok dikirim ke Saluran WhatsApp dalam hitungan detik. Follow sekali, terima notifikasi selamanya.</p>
-    </div>
-    <div class="step-card">
-      <span class="step-icon">🌦️</span>
-      <h3>Info Cuaca Real-time</h3>
-      <p>Snowfall, Sandstorm, Starfall — semua event cuaca langsung diinformasikan termasuk kapan berakhirnya.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SEED LIST -->
-<section aria-labelledby="seeds-title">
-  <div class="section-label">Database Seed</div>
-  <h2 class="section-title" id="seeds-title">Semua seed yang<br />kami pantau</h2>
-  <div class="tier-grid">
-    <div class="tier-card">
-      <div class="tier-header">
-        <span class="tier-badge badge-common">Common</span>
-      </div>
-      <div class="seed-list">
-        <span class="seed-pill">🥕 Carrot</span>
-        <span class="seed-pill">🍓 Strawberry</span>
-        <span class="seed-pill">🫐 Blueberry</span>
-      </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header">
-        <span class="tier-badge badge-uncommon">Uncommon</span>
-      </div>
-      <div class="seed-list">
-        <span class="seed-pill">🌷 Tulip</span>
-        <span class="seed-pill">🍅 Tomato</span>
-        <span class="seed-pill">🍎 Apple</span>
-      </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header">
-        <span class="tier-badge badge-rare">Rare</span>
-      </div>
-      <div class="seed-list">
-        <span class="seed-pill">🎋 Bamboo</span>
-        <span class="seed-pill">🌽 Corn</span>
-        <span class="seed-pill">🌵 Cactus</span>
-        <span class="seed-pill">🍍 Pineapple</span>
-      </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header">
-        <span class="tier-badge badge-epic">Epic</span>
-      </div>
-      <div class="seed-list">
-        <span class="seed-pill">🍄 Mushroom</span>
-        <span class="seed-pill">🫘 Green Bean</span>
-        <span class="seed-pill">🍌 Banana</span>
-        <span class="seed-pill">🍇 Grape</span>
-        <span class="seed-pill">🥥 Coconut</span>
-        <span class="seed-pill">🥭 Mango</span>
-      </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header">
-        <span class="tier-badge badge-legendary">Legendary</span>
-      </div>
-      <div class="seed-list">
-        <span class="seed-pill">🐉 Dragon Fruit</span>
-        <span class="seed-pill">🌰 Acorn</span>
-        <span class="seed-pill">🍒 Cherry</span>
-        <span class="seed-pill">🌻 Sunflower</span>
-      </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header">
-        <span class="tier-badge badge-mythic">Mythic</span>
-      </div>
-      <div class="seed-list">
-        <span class="seed-pill">🪤 Venus Fly Trap</span>
-        <span class="seed-pill">🍑 Pomegranate</span>
-        <span class="seed-pill">🍏 Poison Apple</span>
-      </div>
-    </div>
-    <div class="tier-card">
-      <div class="tier-header">
-        <span class="tier-badge badge-super">Super</span>
-      </div>
-      <div class="seed-list">
-        <span class="seed-pill">🌙 Moon Bloom</span>
-        <span class="seed-pill">🔥 Dragon's Breath</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WA PROMO -->
-<section aria-labelledby="wa-title">
-  <div class="wa-promo">
-    <h2 id="wa-title">Mulai terima notifikasi<br />stok sekarang 🌱</h2>
-    <p>
-      Gratis selamanya. Cukup follow Saluran WhatsApp kami dan kamu akan otomatis
-      mendapat update setiap kali stok Grow A Garden 2 berubah.
-    </p>
-    <a href="https://whatsapp.com/channel/0029VbC3ptQ3wtbAAjRJhS3r" target="_blank" rel="noopener" class="wa-btn">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Follow Saluran WhatsApp
-    </a>
-    <div class="wa-stats">
-      <div class="wa-stat">
-        <div class="num">~5 mnt</div>
-        <div class="lbl">Update interval</div>
-      </div>
-      <div class="wa-stat">
-        <div class="num">24/7</div>
-        <div class="lbl">Bot aktif</div>
-      </div>
-      <div class="wa-stat">
-        <div class="num">0 Rp</div>
-        <div class="lbl">Biaya langganan</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section aria-labelledby="faq-title">
-  <div class="section-label">FAQ</div>
-  <h2 class="section-title" id="faq-title">Pertanyaan umum</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        Apa itu Grow A Garden 2 Stock Tracker?
-        <span class="arrow">▼</span>
-      </button>
-      <div class="faq-a">
-        Ini adalah layanan notifikasi otomatis yang memantau stok seed, gear, dan cuaca di game Roblox Grow A Garden 2.
-        Setiap ada update stok baru, kamu langsung dapat notifikasi via Saluran WhatsApp.
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        Bagaimana cara mendapat notifikasinya?
-        <span class="arrow">▼</span>
-      </button>
-      <div class="faq-a">
-        Cukup klik tombol "Follow Saluran WhatsApp" di halaman ini, lalu follow saluran kami.
-        Notifikasi akan masuk otomatis setiap kali stok diperbarui — tidak perlu install app apapun.
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        Seberapa cepat notifikasi dikirim?
-        <span class="arrow">▼</span>
-      </button>
-      <div class="faq-a">
-        Bot kami memantau Discord secara real-time. Notifikasi biasanya sampai dalam hitungan detik hingga beberapa detik
-        setelah stok diperbarui di server Discord resmi.
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        Apakah ini gratis?
-        <span class="arrow">▼</span>
-      </button>
-      <div class="faq-a">
-        Ya, 100% gratis. Tidak ada biaya langganan, tidak perlu daftar, dan tidak ada iklan di dalam notifikasi WhatsApp.
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        Seed apa saja yang dapat notifikasi khusus?
-        <span class="arrow">▼</span>
-      </button>
-      <div class="faq-a">
-        Seed dengan tier Epic ke atas (Epic, Legendary, Mythic, Super) mendapat highlight khusus berupa mention nama
-        di bagian atas pesan notifikasi, sehingga kamu langsung tahu tanpa harus baca detail.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <p>© 2025 <strong>Grow A Garden 2 Info Stock</strong> — Bukan afiliasi resmi Roblox atau Grow A Garden 2.</p>
-  <p style="margin-top:0.4rem;">
-    <a href="https://whatsapp.com/channel/0029VbC3ptQ3wtbAAjRJhS3r" target="_blank" rel="noopener">Saluran WhatsApp</a>
-    &nbsp;·&nbsp;
-    <a href="https://growagarden2.polar.web.id/">growagarden2.polar.web.id</a>
-  </p>
+  © 2025 Grow A Garden 2 Info Stock · <a href="https://growagarden2.polar.web.id">growagarden2.polar.web.id</a>
 </footer>
 
 <script>
-  // Particles
-  const emojis = ['🌱','🌿','🍃','✨','🌸','🍀','🌾','💚'];
-  const container = document.getElementById('particles');
-  for (let i = 0; i < 18; i++) {
-    const p = document.createElement('span');
-    p.className = 'particle';
-    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDuration = (12 + Math.random() * 20) + 's';
-    p.style.animationDelay = (Math.random() * 15) + 's';
-    p.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
-    container.appendChild(p);
+  const SUPABASE_URL = "https://xcxciixqhmghitmyigbj.supabase.co"
+  const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjeGNpaXhxaG1naGl0bXlpZ2JqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1NjM0NjAsImV4cCI6MjA5NDEzOTQ2MH0.MAtw-cwRuEWXL0OQzULPs8EXfvMtUx2t3RhZeXu45sk"
+
+  const EPIC_PLUS = new Set([
+    'mushroom','green bean','banana','grape','coconut','mango',
+    'dragon fruit','acorn','cherry','sunflower',
+    'venus fly trap','pomegranate','poison apple',
+    'moon bloom',"dragon's breath",'thorn rose','glow mushroom','horned melon'
+  ])
+
+  const WEATHER_EMOJI = {
+    'rain':'🌧️','rainbow':'🌈','snow':'❄️','snowfall':'❄️',
+    'fog':'🌫️','storm':'⛈️','wind':'💨','sunshine':'☀️',
+    'starfall':'🌟','sandstorm':'🌪️','thunderstorm':'⛈️'
   }
 
-  // FAQ accordion
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      } else {
-        btn.setAttribute('aria-expanded', 'false');
+  function getWeatherEmoji(title) {
+    const t = (title || '').toLowerCase()
+    for (const [k, v] of Object.entries(WEATHER_EMOJI)) {
+      if (t.includes(k)) return v
+    }
+    return '🌤️'
+  }
+
+  function timeAgo(iso) {
+    if (!iso) return '–'
+    const diff = Math.floor((Date.now() - new Date(iso)) / 1000)
+    if (diff < 60) return `${diff}d lalu`
+    if (diff < 3600) return `${Math.floor(diff/60)}m lalu`
+    return `${Math.floor(diff/3600)}j lalu`
+  }
+
+  function renderSeeds(seeds) {
+    const el = document.getElementById('seedList')
+    document.getElementById('seedCount').textContent = `${seeds.length} item`
+    if (!seeds.length) {
+      el.innerHTML = '<div class="empty"><span>🌱</span>Tidak ada seed saat ini</div>'
+      return
+    }
+    el.innerHTML = seeds.map(s => `
+      <div class="item-row ${EPIC_PLUS.has(s.name) ? 'epic' : ''}">
+        <span class="item-emoji">${s.emoji}</span>
+        <span class="item-name">${s.name}</span>
+        ${EPIC_PLUS.has(s.name) ? '<span class="epic-star">RARE</span>' : ''}
+        <span class="item-qty">${s.qty}x</span>
+      </div>
+    `).join('')
+  }
+
+  function renderGear(gear) {
+    const el = document.getElementById('gearList')
+    document.getElementById('gearCount').textContent = `${gear.length} item`
+    if (!gear.length) {
+      el.innerHTML = '<div class="empty"><span>⚙️</span>Tidak ada gear saat ini</div>'
+      return
+    }
+    el.innerHTML = gear.map(g => `
+      <div class="item-row">
+        <span class="item-emoji">${g.emoji}</span>
+        <span class="item-name">${g.name}</span>
+        <span class="item-qty">${g.qty}x</span>
+      </div>
+    `).join('')
+  }
+
+  function renderWeather(weather) {
+    if (!weather?.title) return
+    const card = document.getElementById('weatherCard')
+    card.style.display = 'flex'
+    document.getElementById('weatherIcon').textContent = getWeatherEmoji(weather.title)
+    document.getElementById('weatherTitle').textContent = weather.title
+    document.getElementById('weatherBody').textContent = weather.body
+      ?.replace(/<t:\d+:[^>]+>/g, '')
+      ?.replace(/\*\*/g, '')
+      ?.trim() || '–'
+    document.getElementById('weatherTime').textContent = timeAgo(weather.updatedAt)
+  }
+
+  async function fetchStock() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/gag2_stock?id=eq.1&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON,
+          'Authorization': `Bearer ${SUPABASE_ANON}`
+        }
+      })
+      const data = await res.json()
+      if (!data?.length) return
+
+      const row = data[0]
+
+      document.getElementById('loadingEl').style.display = 'none'
+      document.getElementById('stockGrid').style.display = 'grid'
+      document.getElementById('lastUpdate').textContent = `Update: ${timeAgo(row.updated_at)}`
+
+      renderSeeds(row.seeds || [])
+      renderGear(row.gear || [])
+      renderWeather(row.weather || {})
+    } catch (e) {
+      console.error('Fetch error:', e)
+    }
+  }
+
+  // Realtime via Supabase
+  function subscribeRealtime() {
+    const ws = new WebSocket(
+      `wss://xcxciixqhmghitmyigbj.supabase.co/realtime/v1/websocket?apikey=${SUPABASE_ANON}&vsn=1.0.0`
+    )
+
+    ws.onopen = () => {
+      ws.send(JSON.stringify({
+        topic: "realtime:public:gag2_stock",
+        event: "phx_join",
+        payload: {},
+        ref: "1"
+      }))
+    }
+
+    ws.onmessage = (e) => {
+      const msg = JSON.parse(e.data)
+      if (msg.event === 'UPDATE' || msg.event === 'INSERT') {
+        fetchStock()
       }
-    });
-  });
+    }
+
+    ws.onclose = () => {
+      // Reconnect setelah 3 detik
+      setTimeout(subscribeRealtime, 3000)
+    }
+  }
+
+  // Fetch awal + polling fallback tiap 30 detik
+  fetchStock()
+  subscribeRealtime()
+  setInterval(fetchStock, 30000)
 </script>
 
 </body>
